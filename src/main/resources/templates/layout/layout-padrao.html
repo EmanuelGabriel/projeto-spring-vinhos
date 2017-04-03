@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<title>Vinhos</title>
+
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}"/>
+
+</head>
+
+<body>
+
+<div class="aw-layout-page">
+
+	<nav class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference" id="main-navbar">
+	  
+	  <div class="container-fluid">
+
+	    <div class="navbar-header">
+	    
+	      <a class="navbar-brand  hidden-xs" href="#">
+	        <img alt="AlgaWorks" th:src="@{/layout/images/SRSolution-logo.png}"/>
+	      </a>
+
+	      <ul class="nav  navbar-nav">
+	        <li>
+	          <a href="#" class="js-sidebar-toggle"><i class="fa  fa-bars"></i></a>
+	        </li>
+	      </ul>
+	    </div>
+
+	    <ul class="nav navbar-nav  navbar-right">     
+	      <li>
+	      	<p class="navbar-text" th:text="${#authentication.name}"></p>
+	      </li>	
+	      
+	      
+	      <li> 
+	      	<a th:href="@{/vinhos}"><em class="fa fa fa-users"></em></a>
+	      </li>
+	      
+	      
+	      <li> 
+	      	<a th:href="@{/logout}"><em class="fa fa-sign-out"></em></a>
+	      </li>
+	      
+	    </ul>
+
+	  </div>
+	</nav>
+
+	<aside class="aw-layout-sidebar  js-sidebar">
+		<div class="aw-layout-sidebar__content">
+
+    <nav class="aw-menu  js-menu">
+      
+      <ul class="aw-menu__list">
+
+        <li class="aw-menu__item" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
+          <a th:href="@{/vinhos/novo}"><i class="fa fa-plus-square"></i><span>Cadastrar Vinhos</span></a>
+        </li>
+		<li class="aw-menu__item" sec:authorize="hasRole('ROLE_PESQUISAR_VINHO')">
+          <a th:href="@{/vinhos}"><i class="fa fa-search-plus"></i><span>Pesquisar Vinhos</span></a>
+        </li>
+        <li class="aw-menu__item">
+          <a th:href="@{/logout}"><i class="fa fa-sign-in"></i><span>Sair</span></a>
+        </li>
+	
+      </ul>
+      
+    </nav>
+
+		</div>
+	</aside>
+
+	<section class="aw-layout-content  js-content" layout:fragment="conteudo">	</section>
+	
+	
+	<footer class="aw-layout-footer  js-content">
+		<div class="container-fluid">
+			<span class="aw-footer-disclaimer fa fa-registered">&copy; 2017 SRSolution Ltda. Todos os direitos reservados.</span>
+		</div>
+	</footer>
+
+</div>
+
+
+<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
+<script th:src="@{/javascripts/venders/jquery.masknumber.min.js}"></script>
+
+<script>
+	$('.js-money').maskNumber({
+			decimal: ',',
+			thousands: '.'
+	});
+	
+
+</script>
+
+<th:block layout:fragment="javascript-extra"></th:block>
+
+</body>
+</html>
