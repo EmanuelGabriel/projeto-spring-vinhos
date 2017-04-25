@@ -4,16 +4,18 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
 <head>
 	<meta charset="UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-	<title>Vinhos</title>
+	<title>SRSolution Ltda</title>
 
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}"/>
+	
 
 </head>
 
@@ -43,9 +45,9 @@
 	      	<p class="navbar-text" th:text="${#authentication.name}"></p>
 	      </li>	
 	      
-	      
+	     
 	      <li> 
-	      	<a th:href="@{/vinhos}"><em class="fa fa fa-users"></em></a>
+	      	<a th:href="@{/vinhos}"><em class="fa fa-search-plus"></em></a>
 	      </li>
 	      
 	      
@@ -68,9 +70,20 @@
         <li class="aw-menu__item" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
           <a th:href="@{/vinhos/novo}"><i class="fa fa-plus-square"></i><span>Cadastrar Vinhos</span></a>
         </li>
+        
 		<li class="aw-menu__item" sec:authorize="hasRole('ROLE_PESQUISAR_VINHO')">
           <a th:href="@{/vinhos}"><i class="fa fa-search-plus"></i><span>Pesquisar Vinhos</span></a>
         </li>
+        
+        <li class="aw-menu__item" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
+          <a th:href="@{/vinhos/alunos}"><i class="fa fa-users"></i><span>Cadastro Aluno</span></a>
+        </li>
+        
+        <li class="aw-menu__item" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
+          <a th:href="@{/vinhos/config}"><i class="fa fa-wrench"></i><span>Configuração</span></a>
+        </li>
+        
+        
         <li class="aw-menu__item">
           <a th:href="@{/logout}"><i class="fa fa-sign-in"></i><span>Sair</span></a>
         </li>
@@ -87,7 +100,8 @@
 	
 	<footer class="aw-layout-footer  js-content">
 		<div class="container-fluid">
-			<span class="aw-footer-disclaimer fa fa-registered">&copy; 2017 SRSolution Ltda. Todos os direitos reservados.</span>
+			<span class="aw-footer-disclaimer fa fa-registered"> 
+			2017 SRSolution Ltda. Todos os direitos reservados.</span>
 		</div>
 	</footer>
 

@@ -30,11 +30,37 @@ public class VinhosController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Vinho vinho){
+		
 		ModelAndView mv = new ModelAndView("vinho/cadastro-vinho");
 		mv.addObject(vinho);
 		mv.addObject("tipos", TipoVinho.values());
 		return mv;
 	}
+	
+	
+	/*//Criando a ROTA para 'Alunos'
+	@GetMapping("/alunos")
+	public ModelAndView alunos(Vinho vinho){
+		
+		ModelAndView mav = new ModelAndView("vinho/cadastro-alunos");
+		mav.addObject(vinho);		
+		return mav;
+		
+	}*/
+	
+	
+	//Criando a ROTA para 'CONFIGURAÇÃO'
+		@GetMapping("/config")
+		public ModelAndView config(Vinho vinho){
+			
+			ModelAndView mav = new ModelAndView("vinho/config-sistema");
+			mav.addObject(vinho);		
+			return mav;
+			
+		}
+		
+	
+	
 	
 	@PostMapping("/novo")
 	public ModelAndView salvar(@Valid Vinho vinho, BindingResult result,
@@ -52,11 +78,12 @@ public class VinhosController {
 	public ModelAndView pesquisar(VinhoFilter vinhoFilter){
 	
 		ModelAndView mv = new ModelAndView("vinho/pesquisa-vinhos");
-		mv.addObject("vinhos", vinhos.findByNomeContainingIgnoreCase(
-				Optional.ofNullable(vinhoFilter.getNome()).orElse("%")
-				));
+		mv.addObject("vinhos", 
+		vinhos.findByNomeContainingIgnoreCase(Optional.ofNullable(vinhoFilter.getNome()).orElse("%")));
+		
 		return mv;
 	}
+	
 	
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable Long codigo){

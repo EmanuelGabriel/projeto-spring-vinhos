@@ -10,13 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SegurancaController {
 
-	/*Mapeamento para a rota padrão*/
+	//Mapeamento para a rota padrão
 	@RequestMapping(value= {"/", "/login", "home"})
 	public String login(@AuthenticationPrincipal User user){
+		
 		if(user != null)
+			
 			return "redirect:/vinhos";
 		
 		return "login";
 	}
+	
 	
 }

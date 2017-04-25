@@ -9,46 +9,79 @@
 
 
 	<form th:action="@{/}" method="POST">
-		
+
 		<div class="aw-simple-panel">
-			
-			<img alt="AlgaWorks" th:src="@{/layout/images/logo2.png}"/>
-			
+
+			<img alt="AlgaWorks" th:src="@{/layout/images/logo2.png}" />
+
 			<div class="aw-simple-panel__message">
-				Por favor, faça o login.
+			Informe seus dados de acesso
+			</div>
+
+
+
+<!-- 			<div class="aw-simple-panel__message  is-error"
+				th:if="${#bools.isTrue(param.error)}">O usuário e/ou senha não
+				conferem</div>
+ -->
+
+
+			<!-- Mensagem de ERRO DE VALIDAÇÃO -->
+			<div class="alert alert-danger alert-dismissible" 
+			     th:if="${#bools.isTrue(param.error)}" role="alert">
+				
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span></button>
+				
+				<span class="glyphicon glyphicon-exclamation-sign"
+					aria-hidden="true"></span> 
+					
+					<!-- <span class="sr-only">Erro:</span>  -->
+					<strong>Atenção!</strong>
+					
+				O usuário e/ou senha não
+				conferem
 			</div>
 			
-			
-			<div class="aw-simple-panel__message  is-error" th:if="${#bools.isTrue(param.error)}">
-				O usuário e/ou senha não conferem
-			</div>
-			
-			
+
+
+
 			<div class="aw-simple-panel__box">
-				
+
 				<div class="form-group  has-feedback">
-					<input type="text" class="form-control  input-lg" 
-					    placeholder="Seu usuário aqui" 
-						autofocus="autofocus" name="username"/>
-					<span class="glyphicon  glyphicon-envelope  form-control-feedback"></span>
+					<input type="text" class="form-control  input-lg"
+						placeholder="Seu usuário aqui" autofocus="autofocus"
+						name="username" /> <span
+						class="glyphicon  glyphicon-envelope  form-control-feedback"></span>
 				</div>
-				
+
 				<div class="form-group  has-feedback">
-					<input type="password" class="form-control  input-lg" 
-					placeholder="Sua senha aqui" name="password"/>
-					<span class="glyphicon  glyphicon-lock  form-control-feedback" ></span>
+					<input type="password" class="form-control  input-lg"
+						placeholder="Sua senha aqui" name="password" /> <span
+						class="glyphicon  glyphicon-lock  form-control-feedback"></span>
 				</div>
-				
+
+
 				<div class="form-group">
-					<button type="submit" class="btn  btn-primary  btn-lg  aw-btn-full-width">Entrar</button>
+
+					<button type="submit"
+						class="btn  btn-primary  btn-lg  aw-btn-full-width">
+						<span class="glyphicon glyphicon-log-in" aria-hidden="true">
+						</span>
+						
+						Entrar
+						
+						</button>
+
+
 				</div>
-				
-				
+
+
 			</div>
-			
+
 		</div>
 	</form>
-	
+
 </th:block>
 
 
