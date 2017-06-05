@@ -1,4 +1,5 @@
-Spring MVC
+Tecnologia Spring MVC
+
 
 Este é um pequeno projeto que demonstra o uso de uma aplicação desenvolvida em Spring MVC
 
@@ -13,5 +14,5 @@ Foram utilizadas as seguintes ferramentas:
 - Heroku(Deploy)
 - Spring Tool Suite(IDE)
 
-Para mais informações fale com emanuel.gabriel.sousa@hotmail.com
+Maiores informações entre em contato com: emanuel.gabriel.sousa@hotmail.com
 
