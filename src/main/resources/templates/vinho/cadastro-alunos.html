@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+
+<body>
+
+	<section layout:fragment="conteudo">
+
+		<div class="page-header">
+
+			<div class="container-fluid">
+				<h1>Cadastro de Aluno</h1>
+			</div>
+
+		</div>
+
+
+		<div class="container-fluid">
+
+             <!-- Criando o FORM da tela de CADASTRO DE ALUNO -->
+			<form method="POST" class="form-vertical js-form-loading"
+				th:object="${vinho}" th:action="@{/vinhos/alunos}">
+
+
+				<!-- Criando o FORMULÁRIO para cadastro de ALUNO -->
+				
+				<div class="form-group">
+					<label for="nome">Nome</label> <input id="nome" type="text"
+						class="form-control" th:field="*{nome}" />
+				</div>
+				
+				
+				
+				
+				
+				
+
+				<!-- Criação do 'Botão' -->
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+
+			</form>
+
+
+		</div>
+
+	</section>
+
+</body>
+</html>

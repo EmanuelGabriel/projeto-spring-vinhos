@@ -1,127 +1,195 @@
 <!DOCTYPE html>
-<html lang="pt" 
-	xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	
+
 <head>
-	<meta charset="UTF-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title>SRSolution Ltda</title>
+<title>SRSolution Ltda</title>
 
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}"/>
-	
+<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}" />
 
 </head>
 
 <body>
 
-<div class="aw-layout-page">
 
-	<nav class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference" id="main-navbar">
-	  
-	  <div class="container-fluid">
-
-	    <div class="navbar-header">
-	    
-	      <a class="navbar-brand  hidden-xs" href="#">
-	        <img alt="AlgaWorks" th:src="@{/layout/images/SRSolution-logo.png}"/>
-	      </a>
-
-	      <ul class="nav  navbar-nav">
-	        <li>
-	          <a href="#" class="js-sidebar-toggle"><i class="fa  fa-bars"></i></a>
-	        </li>
-	      </ul>
-	    </div>
-
-	    <ul class="nav navbar-nav  navbar-right">     
-	      <li>
-	      	<p class="navbar-text" th:text="${#authentication.name}"></p>
-	      </li>	
-	      
-	     
-	      <li> 
-	      	<a th:href="@{/vinhos}"><em class="fa fa-search-plus"></em></a>
-	      </li>
-	      
-	      
-	      <li> 
-	      	<a th:href="@{/logout}"><em class="fa fa-sign-out"></em></a>
-	      </li>
-	      
-	    </ul>
-
-	  </div>
-	</nav>
-
-	<aside class="aw-layout-sidebar  js-sidebar">
-		<div class="aw-layout-sidebar__content">
-
-    <nav class="aw-menu  js-menu">
-      
-      <ul class="aw-menu__list">
-
-        <li class="aw-menu__item" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
-          <a th:href="@{/vinhos/novo}"><i class="fa fa-plus-square"></i><span>Cadastrar Vinhos</span></a>
-        </li>
-        
-		<li class="aw-menu__item" sec:authorize="hasRole('ROLE_PESQUISAR_VINHO')">
-          <a th:href="@{/vinhos}"><i class="fa fa-search-plus"></i><span>Pesquisar Vinhos</span></a>
-        </li>
-        
-        <li class="aw-menu__item" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
-          <a th:href="@{/vinhos/alunos}"><i class="fa fa-users"></i><span>Cadastro Aluno</span></a>
-        </li>
-        
-        <li class="aw-menu__item" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
-          <a th:href="@{/vinhos/config}"><i class="fa fa-wrench"></i><span>Configuração</span></a>
-        </li>
-        
-        
-        <li class="aw-menu__item">
-          <a th:href="@{/logout}"><i class="fa fa-sign-in"></i><span>Sair</span></a>
-        </li>
-	
-      </ul>
-      
-    </nav>
-
+	<div class="aw-layout-loading  js-loading-overlay">
+		<div class="aw-layout-loading__container">
+			<span class="aw-balls-spinner">Carregando...</span>
 		</div>
-	</aside>
-
-	<section class="aw-layout-content  js-content" layout:fragment="conteudo">	</section>
-	
-	
-	<footer class="aw-layout-footer  js-content">
-		<div class="container-fluid">
-			<span class="aw-footer-disclaimer fa fa-registered"> 
-			2017 SRSolution Ltda. Todos os direitos reservados.</span>
-		</div>
-	</footer>
-
-</div>
+	</div>
 
 
-<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
-<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
-<script th:src="@{/javascripts/venders/jquery.masknumber.min.js}"></script>
+	<div class="aw-layout-page">
 
-<script>
-	$('.js-money').maskNumber({
-			decimal: ',',
-			thousands: '.'
-	});
-	
 
-</script>
+		<nav
+			class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference"
+			id="main-navbar">
 
-<th:block layout:fragment="javascript-extra"></th:block>
+			<div class="container-fluid">
+
+				<div class="navbar-header">
+
+					<a class="navbar-brand  hidden-xs" href="#"> <img
+						alt="SRSolution Ltda"
+						th:src="@{/layout/images/SRSolution-logo.png}" />
+					</a>
+
+					<ul class="nav  navbar-nav">
+						<li><a href="#" class="js-sidebar-toggle"><i
+								class="fa  fa-bars"></i></a></li>
+					</ul>
+				</div>
+
+				<ul class="nav navbar-nav  navbar-right">
+
+					<li><a href="#" class="js-search-modal-trigger-show"><i
+							class="fa  fa-search"></i></a></li>
+
+
+					<li>
+						<p class="navbar-text" th:text="${#authentication.name}"></p>
+					</li>
+
+
+					<li><a th:href="@{/vinhos}"><em class="fa fa-search-plus"></em></a>
+					</li>
+
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"> <i class="fa  fa-user"></i>
+					</a>
+
+						<ul class="dropdown-menu">
+							<li>
+								<div class="aw-logged-user">
+									<img src="https://api.adorable.io/avatars/80/joaodascouves"
+										width="80" height="80" alt="Samuel Gabriel"
+										class="aw-logged-user__picture" /> <span
+										class="aw-logged-user__name">Samuel Gabriel</span>
+								</div>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Meu perfil</a></li>
+							<li><a href="#">Alterar senha</a></li>
+							<li><a href="#">Pagamentos</a></li>
+						</ul></li>
+
+
+
+					<li><a th:href="@{/logout}"><em class="fa fa-sign-out"></em></a>
+					</li>
+
+				</ul>
+
+			</div>
+		</nav>
+
+		<aside class="aw-layout-sidebar  js-sidebar">
+			<div class="aw-layout-sidebar__content">
+
+				<nav class="aw-menu  js-menu">
+
+					<ul class="aw-menu__list">
+
+						<li class="aw-menu__item"
+							sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')"><a
+							th:href="@{/vinhos/novo}"><i class="fa fa-plus-square"></i><span>Cadastrar
+									Vinhos</span></a></li>
+
+						<li class="aw-menu__item"
+							sec:authorize="hasRole('ROLE_PESQUISAR_VINHO')"><a
+							th:href="@{/vinhos}"><i class="fa fa-search-plus"></i><span>Pesquisar
+									Vinhos</span></a></li>
+
+						<li class="aw-menu__item"
+							sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')"><a
+							th:href="@{/alunos/novo}"><i class="fa fa-users"></i><span>Cadastro
+									Aluno</span></a></li>
+
+
+						<li class="aw-menu__item  is-expanded">
+						<a href="#"> 
+						<i class="fa fa-wrench"></i><span>Configuração</span><i class="aw-menu__navigation-icon  fa"></i>
+						</a>
+
+							<ul class="aw-menu__list  aw-menu__list--sublist">
+							
+								<li class="aw-menu__item  aw-menu__item--link" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
+								<a th:href="@{/config/novo}">Página vazia</a></li>
+									
+								<!-- <li class="aw-menu__item  aw-menu__item--link"><a
+									href="login.html">Login</a></li>
+									
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="esqueceu-a-senha.html">Esqueceu a senha</a></li>
+									
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="403.html">403</a></li>
+									
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="404.html">404</a></li>
+									
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="500.html">500</a></li> -->
+							
+							</ul>
+							
+							</li>
+
+
+
+						<!-- <li class="aw-menu__item"
+							sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')"><a
+							th:href="@{/vinhos/config}"><i class="fa fa-wrench"></i><span>Configuração</span></a>
+						</li> -->
+
+
+						<li class="aw-menu__item"><a th:href="@{/logout}"><i
+								class="fa fa-sign-in"></i><span>Sair</span></a></li>
+
+					</ul>
+
+				</nav>
+
+			</div>
+		</aside>
+
+		<section class="aw-layout-content  js-content"
+			layout:fragment="conteudo"></section>
+
+
+		<footer class="aw-layout-footer  js-content">
+			<div class="container-fluid">
+				<span class="aw-footer-disclaimer fa fa-registered"> 2017
+					SRSolution Ltda. Todos os direitos reservados.</span>
+			</div>
+		</footer>
+
+	</div>
+
+
+	<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+	<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
+	<script th:src="@{/javascripts/venders/jquery.masknumber.min.js}"></script>
+
+	<script>
+		$('.js-money').maskNumber({
+			decimal : ',',
+			thousands : '.'
+		});
+	</script>
+
+	<th:block layout:fragment="javascript-extra"></th:block>
 
 </body>
 </html>

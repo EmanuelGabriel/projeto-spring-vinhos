@@ -1,5 +1,6 @@
 package com.srsolution.vinhos.repository.filter;
 
+
 public class VinhoFilter {
 
 	public String nome;

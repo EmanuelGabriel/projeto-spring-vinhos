@@ -21,14 +21,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
+		
 		web.ignoring()
+		
 		   .antMatchers("/layout/**");
+	
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
+		
 				.antMatchers("/vinhos").hasRole("PESQUISAR_VINHO")
 				.antMatchers("/vinhos/**").hasRole("CADASTRAR_VINHO")
 				.anyRequest().authenticated()
@@ -43,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+	
 	}
 	
 	

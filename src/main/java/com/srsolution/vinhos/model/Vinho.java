@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -20,14 +21,15 @@ public class Vinho {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@NotBlank
+	@NotBlank(message = "Campo nome é obrigatório")
 	private String nome;
 	
-	@NotNull
+	@NotNull(message = "Campo Tipo de vinho é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private TipoVinho tipo;
 	
-	@NotNull 
+	@NotNull(message = "Campo Valor é obrigatório")
+	@Min(value = 0, message = "Valor dever ser acima de 0")
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valor;
 	

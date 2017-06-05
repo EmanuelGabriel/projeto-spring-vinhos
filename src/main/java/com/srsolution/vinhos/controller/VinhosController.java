@@ -24,53 +24,36 @@ import com.srsolution.vinhos.repository.filter.VinhoFilter;
 @Controller
 @RequestMapping("/vinhos")
 public class VinhosController {
+	
+	private static final String VIEWERCADASTRO_VINHO = "vinho/cadastro-vinho";
+	
 
 	@Autowired
 	private Vinhos vinhos;
 	
+	
 	@GetMapping("/novo")
 	public ModelAndView novo(Vinho vinho){
 		
-		ModelAndView mv = new ModelAndView("vinho/cadastro-vinho");
+		ModelAndView mv = new ModelAndView(VIEWERCADASTRO_VINHO);
 		mv.addObject(vinho);
 		mv.addObject("tipos", TipoVinho.values());
 		return mv;
 	}
-	
-	
-	/*//Criando a ROTA para 'Alunos'
-	@GetMapping("/alunos")
-	public ModelAndView alunos(Vinho vinho){
 		
-		ModelAndView mav = new ModelAndView("vinho/cadastro-alunos");
-		mav.addObject(vinho);		
-		return mav;
-		
-	}*/
-	
-	
-	//Criando a ROTA para 'CONFIGURAÇÃO'
-		@GetMapping("/config")
-		public ModelAndView config(Vinho vinho){
-			
-			ModelAndView mav = new ModelAndView("vinho/config-sistema");
-			mav.addObject(vinho);		
-			return mav;
-			
-		}
-		
-	
-	
+
 	
 	@PostMapping("/novo")
 	public ModelAndView salvar(@Valid Vinho vinho, BindingResult result,
 			 				   RedirectAttributes attr){
 		if(result.hasErrors())
+			
 			return novo(vinho);
 			
 		vinhos.save(vinho);
 		attr.addFlashAttribute("mensagem", "Vinho salvo com sucesso!");
 		return new ModelAndView("redirect:/vinhos/novo");
+	
 	}
 	
 	
