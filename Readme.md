@@ -14,5 +14,6 @@ Foram utilizadas as seguintes ferramentas:
 - Heroku(Deploy)
 - Spring Tool Suite(IDE)
 
-Maiores informações entre em contato com: emanuel.gabriel.sousa@hotmail.com
+Para mais informações entre em contato: emanuel.gabriel.sousa@hotmail.com
+Sítio: emanuelgabriel.github.io
 
